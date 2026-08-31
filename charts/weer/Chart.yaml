@@ -1,0 +1,6 @@
+apiVersion: v2
+name: weer
+description: Helm chart for WeER Renewal local k3s deployment
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

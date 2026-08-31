@@ -1,0 +1,9 @@
+.DS_Store
+*.log
+*.tmp
+.env
+.env.*
+!.env.example
+charts/*/charts/
+charts/*/tmpcharts/
+*.tgz

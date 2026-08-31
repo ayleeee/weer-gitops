@@ -1,0 +1,59 @@
+global:
+  imagePullPolicy: IfNotPresent
+
+backend:
+  enabled: true
+  replicaCount: 2
+  image:
+    repository: registry.example.com/weer/backend
+    tag: "initial"
+    digest: ""
+  service:
+    type: ClusterIP
+    port: 8080
+    targetPort: 8080
+  probes:
+    readinessPath: /actuator/health/readiness
+    livenessPath: /actuator/health/liveness
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  env:
+    SPRING_PROFILES_ACTIVE: local
+
+frontend:
+  enabled: true
+  replicaCount: 2
+  image:
+    repository: registry.example.com/weer/frontend
+    tag: "initial"
+    digest: ""
+  service:
+    type: ClusterIP
+    port: 80
+    targetPort: 80
+  probes:
+    readinessPath: /
+    livenessPath: /
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+
+ingress:
+  enabled: true
+  className: traefik
+  host: weer.local
+  annotations: {}
+
+monitoring:
+  enabled: true
+  serviceMonitor:
+    enabled: false

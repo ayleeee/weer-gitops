@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: weer-local
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ayleeee/weer-gitops.git
+    targetRevision: main
+    path: charts/weer
+    helm:
+      valueFiles:
+        - values-local.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: weer
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
