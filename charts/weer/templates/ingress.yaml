@@ -15,6 +15,7 @@ spec:
     - host: {{ .Values.ingress.host }}
       http:
         paths:
+          {{- if .Values.backend.enabled }}
           - path: /api
             pathType: Prefix
             backend:
@@ -22,6 +23,8 @@ spec:
                 name: {{ include "weer.fullname" . }}-backend
                 port:
                   name: http
+          {{- end }}
+          {{- if .Values.frontend.enabled }}
           - path: /
             pathType: Prefix
             backend:
@@ -29,4 +32,5 @@ spec:
                 name: {{ include "weer.fullname" . }}-frontend
                 port:
                   name: http
+          {{- end }}
 {{- end }}

@@ -26,7 +26,7 @@ backend:
     SPRING_PROFILES_ACTIVE: local
 
 frontend:
-  enabled: true
+  enabled: false
   replicaCount: 2
   image:
     repository: registry.example.com/weer/frontend

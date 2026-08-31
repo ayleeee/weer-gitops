@@ -4,12 +4,14 @@
 
 This document owns the GitOps side of the WeER Renewal deployment flow.
 
-`weer-pipeline` builds and publishes images. This repository receives image metadata and turns it into declarative deployment state.
+`weer-pipeline` builds and publishes the backend image. This repository receives backend image metadata and turns it into declarative deployment state.
+
+The frontend is delivered separately as a React static build uploaded to S3, with optional CloudFront invalidation. It is not part of the k3s GitOps MVP.
 
 ## Flow
 
 ```text
-Jenkins backend/frontend pipeline
+Jenkins backend pipeline
   -> image pushed
   -> downstream Update K8S Manifest job receives image metadata
   -> this repo is checked out
@@ -21,7 +23,7 @@ Jenkins backend/frontend pipeline
 
 ## Inputs From Jenkins
 
-- `SERVICE_NAME`: `weer-backend` or `weer-frontend`
+- `SERVICE_NAME`: `weer-backend`
 - `IMAGE_REPOSITORY`
 - `IMAGE_TAG`
 - `IMAGE_DIGEST`
@@ -45,14 +47,7 @@ backend:
     tag: "..."
 ```
 
-Frontend image:
-
-```yaml
-frontend:
-  image:
-    repository: registry.example.com/weer/frontend
-    tag: "..."
-```
+Frontend image values may remain in the chart for a future container-based variant, but the default MVP keeps `frontend.enabled: false`.
 
 ## Commit Message
 

@@ -6,7 +6,7 @@ Describe how to recover from a bad image update in the GitOps flow.
 
 ## Scenario
 
-A backend or frontend image tag is updated in `charts/weer/values-local.yaml`, Argo CD syncs it, and the rollout fails.
+A backend image tag is updated in `charts/weer/values-local.yaml`, Argo CD syncs it, and the rollout fails.
 
 ## Recovery Options
 

@@ -2,7 +2,9 @@
 
 ## Goal
 
-Run WeER Renewal on a local k3s cluster using Argo CD and Helm.
+Run the WeER Renewal backend on a local k3s cluster using Argo CD and Helm.
+
+Frontend delivery is handled by the Jenkins static-site pipeline through S3 and optional CloudFront invalidation.
 
 ## Planned Steps
 
@@ -29,4 +31,4 @@ Map it to the local ingress endpoint during local testing.
 - `kubectl get application -n argocd`
 - `kubectl get deploy,svc,ingress -n weer`
 - Argo CD sync status
-- rollout status for backend/frontend
+- rollout status for backend

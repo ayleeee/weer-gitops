@@ -8,7 +8,6 @@ Usage:
 
 Examples:
   scripts/update-image-tag.sh backend registry.example.com/weer/backend weer-backend-42-a1b2c3d
-  scripts/update-image-tag.sh frontend registry.example.com/weer/frontend weer-frontend-42-a1b2c3d charts/weer/values-local.yaml
 USAGE
 }
 
@@ -22,8 +21,8 @@ image_repository="$2"
 image_tag="$3"
 values_file="${4:-charts/weer/values-local.yaml}"
 
-if [ "$service" != "backend" ] && [ "$service" != "frontend" ]; then
-  echo "service must be backend or frontend" >&2
+if [ "$service" != "backend" ]; then
+  echo "service must be backend for the current GitOps MVP" >&2
   exit 1
 fi
 

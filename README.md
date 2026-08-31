@@ -4,7 +4,8 @@ WeER GitOps owns the declarative deployment layer for the WeER Renewal portfolio
 
 This repository is intentionally separate from `weer-pipeline`.
 
-- `weer-pipeline` builds and publishes images, then triggers a GitOps update handoff.
+- `weer-pipeline` builds and publishes the backend image, then triggers a GitOps update handoff.
+- The frontend is published as a React static build to S3, with optional CloudFront invalidation, and is not part of the k3s GitOps MVP.
 - `weer-gitops` stores Helm values, Kubernetes manifests, Argo CD Applications, and rollout/rollback documentation.
 - Argo CD syncs this repository into a local k3s cluster.
 
@@ -12,13 +13,13 @@ This repository is intentionally separate from `weer-pipeline`.
 
 ```text
 weer-pipeline
-  -> backend/frontend image build
-  -> image push
+  -> backend image build
+  -> backend image push
   -> downstream Update K8S Manifest job
   -> update this repo
 
 weer-gitops
-  -> Helm values change
+  -> backend Helm values change
   -> Git commit
   -> Argo CD sync
   -> k3s rollout
@@ -48,4 +49,4 @@ weer-gitops
 
 ## Status
 
-Initial GitOps scaffold. Images and hostnames use placeholders until the pipeline and local k3s environment are connected.
+Initial GitOps scaffold. Backend image and hostnames use placeholders until the pipeline and local k3s environment are connected.

@@ -4,6 +4,7 @@ backend:
     tag: "local-initial"
   replicaCount: 1
 frontend:
+  enabled: false
   image:
     repository: registry.example.com/weer/frontend
     tag: "local-initial"
