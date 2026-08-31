@@ -25,28 +25,6 @@ backend:
   env:
     SPRING_PROFILES_ACTIVE: local
 
-frontend:
-  enabled: false
-  replicaCount: 2
-  image:
-    repository: registry.example.com/weer/frontend
-    tag: "initial"
-    digest: ""
-  service:
-    type: ClusterIP
-    port: 80
-    targetPort: 80
-  probes:
-    readinessPath: /
-    livenessPath: /
-  resources:
-    requests:
-      cpu: 50m
-      memory: 128Mi
-    limits:
-      cpu: 250m
-      memory: 256Mi
-
 ingress:
   enabled: true
   className: traefik

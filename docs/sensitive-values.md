@@ -15,6 +15,5 @@
 
 ```text
 registry.example.com/weer/backend
-registry.example.com/weer/frontend
 weer.local
 ```

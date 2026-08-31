@@ -47,7 +47,7 @@ backend:
     tag: "..."
 ```
 
-Frontend image values may remain in the chart for a future container-based variant, but the default MVP keeps `frontend.enabled: false`.
+Frontend static hosting is tracked in `weer-pipeline`, not in this GitOps chart.
 
 ## Commit Message
 

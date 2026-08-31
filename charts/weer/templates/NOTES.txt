@@ -1,7 +1,4 @@
 WeER Renewal has been deployed.
 
-Frontend:
-  http://{{ .Values.ingress.host }}/
-
 Backend:
   http://{{ .Values.ingress.host }}/api
